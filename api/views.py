@@ -26,7 +26,14 @@ def getMangaDetails(id):
 
 def api(request):
     id=request.GET['id']
-    return JsonResponse(getMangaDetails(id))
+    user=request.GET['user']
+    psswd=request.GET['psswd']
+    if user=='flamekiller' and str(psswd)=='42069':
+        return JsonResponse(getMangaDetails(id))
+    elif user=='mkpro118' and str(psswd)=='42069':
+        return JsonResponse(getMangaDetails(id))
+    else:
+        return JsonResponse({'error':'user not found'})
 
 def home(request):
     return render(request, 'index.html')
