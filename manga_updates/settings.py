@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-o3962v2gbubg=9r=1um9cl++_g5$)=)cp9*l@ofdm5)r8t9-j0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'https://mangaupdatesapi.herokuapp.com/']
+ALLOWED_HOSTS = ['http://localhost:8000/', 'https://mangaupdatesapi.herokuapp.com/']
 
 
 # Application definition
