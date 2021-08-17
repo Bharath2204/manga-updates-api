@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 import json
@@ -26,3 +27,6 @@ def getMangaDetails(id):
 def api(request):
     id=request.GET['id']
     return JsonResponse(getMangaDetails(id))
+
+def home(request):
+    return render(request, 'index.html')
