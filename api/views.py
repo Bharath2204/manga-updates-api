@@ -1,39 +1,39 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-import requests
-import json
+from django.shortcuts import render as __showWebpage
+from django.http import JsonResponse as __notJsonResponse
+import requests as __stseuqer
+import json as __notjson
 
-def getMangaDetails(id):
-    headers = {
+__url = 'https://www.mangaupdates.com/api/series.php'
+
+def __getMangaDetails(__id):
+    __headers = {
         'API-Version': '1.1.0',
         'Accept-Language' : 'en-GB,en-US;q=0.9,en;q=0.8,ja;q=0.7'
     }
 
-    params = (
-        ('id', id),
+    __params = (
+        ('id', __id),
     )
 
-    response = requests.get('https://www.mangaupdates.com/api/series.php', headers=headers, params=params)
+    __response = __stseuqer.get(__url, headers=__headers, params=__params)
 
-    json_string = json.dumps(response.json(), ensure_ascii=False) # .encode('utf-8')
+    __json_string = __notjson.dumps(__response.json(), ensure_ascii=False) # .encode('utf-8')
 
     # f = json_string.decode().replace(r'\r\n', ', ')
-    f = json_string.replace(r'\r\n', ', ').replace('&#039;', '\'')
+    __f = __json_string.replace(r'\r\n', ', ').replace('&#039;', '\'')
 
-    f_j = json.loads(f)
-    return f_j
+    __f_j = __notjson.loads(f)
+    return __f_j
 
 
 def api(request):
-    id=request.GET['id']
-    user=request.GET['user']
-    psswd=request.GET['psswd']
-    if user=='flamekiller' and str(psswd)=='42069':
-        return JsonResponse(getMangaDetails(id))
-    elif user=='mkpro118' and str(psswd)=='42069':
-        return JsonResponse(getMangaDetails(id))
+    __id = str(request.GET.get('id', 'random id')
+    __user= str(request.GET('user', 'random noob')
+    __pswd = str(request.GET('password', 'weak password')
+    if __user in ['flamekiller','mkpro118',] and str(__pswd)=='42069':
+        return __notJsonResponse(___getMangaDetails(__id))
     else:
-        return JsonResponse({'error':'user not found'})
+        return __notJsonResponse({'error':'incorrect credentials', 'user' : __user, 'password' : __pswd})
 
 def home(request):
-    return render(request, 'index.html')
+    return __showWebpage(request, 'index.html')
